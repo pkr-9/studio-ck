@@ -1,0 +1,17 @@
+{
+  "headline": "EMOTION IN FLUX",
+  "subhead": "We deliver beautiful, reliable, and emotionally resonant visual stories. From intimate weddings to high-stakes corporate events, we capture the chaotic beauty of the moment.",
+  "ctas": [
+    { "label": "View Portfolio", "href": "/portfolio" },
+    { "label": "Book Now", "href": "/contact" }
+  ],
+  "kpis": [
+    { "label": "Events Covered", "value": "500+" },
+    { "label": "Happy Clients", "value": "100%" },
+    { "label": "Years Active", "value": "10+" }
+  ],
+  "heroStats": {
+    "timeseries": [],
+    "labels": []
+  }
+}

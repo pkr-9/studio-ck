@@ -1,0 +1,59 @@
+[
+  {
+    "id": "s1",
+    "slug": "event-photography",
+    "title": "Event Photography",
+    "shortDescription": "Coverage for weddings, parties, concerts, and corporate functions.",
+    "fullDescription": "...",
+    "iconName": "Camera",
+    "category": "Photography",
+    "features": ["Custom shot lists", "Multi-photographer options"],
+    "isPopular": true,
+    "imageUrl": "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    "id": "s2",
+    "slug": "event-videography",
+    "title": "Event Videography",
+    "shortDescription": "Cinematic highlight films and full event documentation.",
+    "fullDescription": "...",
+    "iconName": "Video",
+    "category": "Videography",
+    "features": ["Cinematic highlight films", "Drone footage options"],
+    "isPopular": true,
+    "imageUrl": "https://images.unsplash.com/photo-1649183424680-464747a8e43d?q=80&w=386&auto=format&fit=crop"
+  },
+  {
+    "id": "s3",
+    "slug": "live-streaming",
+    "title": "Live Streaming",
+    "shortDescription": "Broadcast events live to YouTube, Facebook, or Vimeo.",
+    "fullDescription": "...",
+    "iconName": "Radio",
+    "category": "Livestreaming",
+    "features": ["Multi-platform support", "Professional audio"],
+    "imageUrl": "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    "id": "s4",
+    "slug": "creative-editing",
+    "title": "Creative Editing",
+    "shortDescription": "Color correction, skin retouching, and cinematic grading.",
+    "fullDescription": "...",
+    "iconName": "Wand",
+    "category": "Editing",
+    "features": ["Skin tone removal", "Cinematic LUTs"],
+    "imageUrl": "https://images.unsplash.com/photo-1607861884586-c7cfaed16290?q=80&w=387&auto=format&fit=crop"
+  },
+  {
+    "id": "s5",
+    "slug": "studio-portraits",
+    "title": "Studio Portraits",
+    "shortDescription": "Headshots, family portraits, and product photography.",
+    "fullDescription": "...",
+    "iconName": "User",
+    "category": "Studio",
+    "features": ["Professional headshots", "Family sessions"],
+    "imageUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop"
+  }
+]

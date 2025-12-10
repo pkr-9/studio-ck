@@ -1,0 +1,57 @@
+[
+  {
+    "id": "p1",
+    "name": "Basic Event",
+    "description": "Ideal for small parties or intimate ceremonies.",
+    "price": 499,
+    "currency": "USD",
+    "durationHours": 3,
+    "deliverables": [
+      "3 hours on-site coverage",
+      "1 photographer",
+      "150 edited high-res images",
+      "Online private gallery",
+      "2 rounds of retouching"
+    ],
+    "turnaroundDays": 10,
+    "isPopular": false,
+    "recommendedFor": "Small parties, Ceremonies"
+  },
+  {
+    "id": "p2",
+    "name": "Standard Event",
+    "description": "Perfect for half-day weddings or standard corporate events.",
+    "price": 1299,
+    "currency": "USD",
+    "durationHours": 6,
+    "deliverables": [
+      "6 hours coverage",
+      "Lead photographer + Assistant",
+      "400 edited images",
+      "3-5 minute highlight video",
+      "Online gallery + 25 prints"
+    ],
+    "turnaroundDays": 21,
+    "isPopular": true,
+    "recommendedFor": "Weddings, Corporate Events"
+  },
+  {
+    "id": "p3",
+    "name": "Premium Event",
+    "description": "Complete documentation for full-day weddings or major functions.",
+    "price": 2499,
+    "currency": "USD",
+    "durationHours": 10,
+    "deliverables": [
+      "Full day coverage",
+      "Lead + Second Shooter + Videographer",
+      "800+ edited images",
+      "6-8 min cinematic film",
+      "Same-day 60-sec social highlight",
+      "20-page Photobook"
+    ],
+    "turnaroundDays": 30,
+    "isPopular": false,
+    "recommendedFor": "Full Weddings, Large Galas"
+  }
+]

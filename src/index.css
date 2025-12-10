@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base: Very light cool grey for readability in light mode */
+    --background: 220 30% 98%;
+    /* Text: Deep Navy */
+    --foreground: 222 47% 11%;
+
+    /* Card: White */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary: Electric Indigo (Vibrant & Stylish) */
+    --primary: 245 80% 60%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary: Soft Lavender Grey */
+    --secondary: 240 20% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 240 20% 96%;
+    --accent-foreground: 222 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 245 80% 60%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Base: Deep Midnight Blue (Not pure black, feels richer) */
+    --background: 222 47% 6%; /* #080C17 */
+    --foreground: 210 40% 98%;
+
+    /* Card: Slightly lighter midnight */
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary: Glowing Electric Violet/Blue */
+    --primary: 245 90% 65%; /* #6d5ce8 - Pops against dark bg */
+    --primary-foreground: 222 47.4% 11.2%;
+
+    /* Secondary: Deep Indigo Grey */
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 245 90% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
