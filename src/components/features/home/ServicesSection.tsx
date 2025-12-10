@@ -1,8 +1,11 @@
+import { useRef, useState, useEffect } from "react";
 import { useServices } from "@/hooks/use-content";
 import { cn } from "@/lib/utils";
 import { Camera, Video, Mic2, Wand2, User, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useInView } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const IconMap: Record<string, any> = {
   Camera: Camera,
@@ -18,7 +21,7 @@ export function ServicesSection() {
   if (isLoading) return <ServicesSkeleton />;
 
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section className="py-24 bg-transparent relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50" />
 
@@ -38,63 +41,133 @@ export function ServicesSection() {
 
         {/* Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services?.map((service) => {
-            const Icon = IconMap[service.iconName] || Camera;
-
-            return (
-              <Link
-                key={service.id}
-                to={`/services#${service.slug}`}
-                className="group relative h-[400px] w-full block overflow-hidden rounded-2xl border border-border/20 bg-card"
-              >
-                {/* === IMAGE LAYER (The Lens Focus Effect) === */}
-                <div className="absolute inset-0 z-0">
-                  <img
-                    src={service.imageUrl}
-                    alt={service.title}
-                    className="h-full w-full object-cover transition-all duration-700 ease-out 
-                      filter grayscale blur-[2px] scale-100 opacity-60
-                      group-hover:grayscale-0 group-hover:blur-0 group-hover:scale-110 group-hover:opacity-100"
-                  />
-                  {/* Overlay Gradient: Dark at bottom for text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent transition-opacity duration-500 group-hover:opacity-60" />
-
-                  {/* Colored tint on hover */}
-                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay" />
-                </div>
-
-                {/* === CONTENT LAYER === */}
-                <div className="relative z-10 h-full flex flex-col justify-end p-8">
-                  {/* Icon Container - Floats up on hover */}
-                  <div className="mb-auto transform translate-y-0 transition-transform duration-500 group-hover:-translate-y-2">
-                    <div className="w-12 h-12 rounded-lg bg-background/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-primary-foreground group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                      <Icon size={24} />
-                    </div>
-                  </div>
-
-                  {/* Text Content - Slides up slightly */}
-                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-2xl font-heading font-bold mb-2 text-foreground group-hover:text-white transition-colors">
-                      {service.title}
-                    </h3>
-
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-2 group-hover:text-white/90 transition-colors">
-                      {service.shortDescription}
-                    </p>
-
-                    {/* Button Reveal */}
-                    <div className="flex items-center gap-2 text-sm font-bold text-primary opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
-                      <span className="uppercase tracking-widest">Explore</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+          {services?.map((service) => (
+            <ServiceCard key={service.id} service={service} />
+          ))}
         </div>
       </div>
     </section>
+  );
+}
+
+// === Sub-Component for Individual Card Logic ===
+function ServiceCard({ service }: { service: any }) {
+  const Icon = IconMap[service.iconName] || Camera;
+  const ref = useRef(null);
+  const isMobile = useIsMobile();
+  const [isHovered, setHovered] = useState(false);
+
+  // Framer Motion Hook: Detects when element is in center of viewport
+  // margin: "-20%" acts as a "focus zone" in the middle of the screen
+  const isInView = useInView(ref, {
+    margin: "-20% 0px -20% 0px",
+    amount: 0.5, // Trigger when 50% of the card is visible
+  });
+
+  // Determine Active State:
+  // Mobile = controlled by Scroll Position (In View)
+  // Desktop = controlled by Mouse Hover
+  const isActive = isMobile ? isInView : isHovered;
+
+  return (
+    <div ref={ref} className="h-full">
+      <Link
+        to={`/services#${service.slug}`}
+        className="relative h-[400px] w-full block overflow-hidden rounded-2xl border border-border/20 bg-card"
+        onMouseEnter={() => !isMobile && setHovered(true)}
+        onMouseLeave={() => !isMobile && setHovered(false)}
+      >
+        {/* === IMAGE LAYER (The Lens Focus Effect) === */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={service.imageUrl}
+            alt={service.title}
+            className={cn(
+              "h-full w-full object-cover transition-all duration-700 ease-out will-change-transform",
+              isActive
+                ? "grayscale-0 blur-0 scale-110 opacity-100" // Active State (Clear)
+                : "grayscale blur-[2px] scale-100 opacity-60" // Idle State (Blurred)
+            )}
+          />
+          {/* Overlay Gradient: Always present for text readability, but lighter when active */}
+          <div
+            className={cn(
+              "absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent transition-opacity duration-500",
+              isActive ? "opacity-60" : "opacity-90"
+            )}
+          />
+
+          {/* Colored tint: Only visible when active */}
+          <div
+            className={cn(
+              "absolute inset-0 bg-primary/20 mix-blend-overlay transition-opacity duration-500",
+              isActive ? "opacity-100" : "opacity-0"
+            )}
+          />
+        </div>
+
+        {/* === CONTENT LAYER === */}
+        <div className="relative z-10 h-full flex flex-col justify-end p-8">
+          {/* Icon Container - Floats up when active */}
+          <div
+            className={cn(
+              "mb-auto transform transition-transform duration-500",
+              isActive ? "-translate-y-2" : "translate-y-0"
+            )}
+          >
+            <div
+              className={cn(
+                "w-12 h-12 rounded-lg backdrop-blur-md border flex items-center justify-center transition-colors duration-300",
+                isActive
+                  ? "bg-primary text-white border-primary"
+                  : "bg-background/10 text-primary-foreground border-white/10"
+              )}
+            >
+              <Icon size={24} />
+            </div>
+          </div>
+
+          {/* Text Content - Slides up when active */}
+          <div
+            className={cn(
+              "transform transition-transform duration-500",
+              isActive ? "translate-y-0" : "translate-y-4"
+            )}
+          >
+            <h3
+              className={cn(
+                "text-2xl font-heading font-bold mb-2 transition-colors",
+                isActive ? "text-white" : "text-foreground"
+              )}
+            >
+              {service.title}
+            </h3>
+
+            <p
+              className={cn(
+                "text-sm leading-relaxed mb-6 line-clamp-2 transition-colors",
+                isActive ? "text-white/90" : "text-muted-foreground"
+              )}
+            >
+              {service.shortDescription}
+            </p>
+
+            {/* Button Reveal */}
+            <div
+              className={cn(
+                "flex items-center gap-2 text-sm font-bold text-primary transition-all duration-500 delay-100",
+                isActive
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              )}
+            >
+              <span className="uppercase tracking-widest">Explore</span>
+              <ArrowRight className="w-4 h-4" />
+            </div>
+          </div>
+        </div>
+      </Link>
+    </div>
   );
 }
 

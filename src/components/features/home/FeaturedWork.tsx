@@ -11,9 +11,9 @@ export function FeaturedWork() {
   const items = portfolio?.slice(0, 4) || [];
 
   return (
-    <section className="py-24 bg-muted/5 relative">
+    <section className="py-24 bg-transparent relative">
       <div className="container px-6 mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-6">
           <div>
             <span className="text-primary font-bold tracking-widest text-sm uppercase mb-2 block">
               Selected Works

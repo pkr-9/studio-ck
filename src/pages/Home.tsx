@@ -78,7 +78,7 @@ export default function Home() {
       />
 
       {/* 2. MISSION & VALUES (Based on Doc Section 1) */}
-      <section className="py-20 bg-background border-b border-border/40">
+      <section className="py-20 bg-transparent border-b border-border/40">
         <div className="container px-6 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left: Text */}
@@ -131,7 +131,7 @@ export default function Home() {
       {/* 5. CALL TO ACTION (Based on Doc Section 12 - Lead Inquiry) */}
       <section className="py-24 relative overflow-hidden">
         {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background z-0" />
+        <div className="absolute inset-0 bg-transparent from-primary/10 via-background to-background z-0" />
 
         <div className="container px-6 mx-auto relative z-10 text-center">
           <h2 className="text-4xl md:text-6xl font-heading font-black mb-6">

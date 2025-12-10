@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 
 export const InnerPageLayout = () => {
   return (
-    <div className="min-h-screen bg-background flex flex-col font-body text-foreground">
+    <div className="min-h-screen bg-transparent flex flex-col font-body text-foreground">
       {/* 1. The Fixed Navbar with 3D Logo */}
       <Navbar />
 

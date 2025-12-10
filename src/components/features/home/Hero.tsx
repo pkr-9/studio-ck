@@ -237,7 +237,7 @@ interface HeroProps {
 export function Hero({ headline, subhead }: HeroProps) {
   return (
     // Change 1: Use h-[100dvh] for full mobile screen height
-    <section className="relative w-full h-[100dvh] overflow-hidden bg-background flex items-center justify-center">
+    <section className="relative w-full h-[100dvh] overflow-hidden bg-transparent flex items-center justify-center">
       {/* === 3D Layer (Neon Rain) === */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Canvas camera={{ position: [0, 0, 12], fov: 45 }} dpr={[1, 1.5]}>
@@ -263,7 +263,7 @@ export function Hero({ headline, subhead }: HeroProps) {
             </span>
           </div>
 
-          <h1 className="font-heading text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter text-foreground leading-[0.9] drop-shadow-2xl">
+          <h1 className="font-heading text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter text-foreground leading-[0.9] drop-shadow-2xl">
             {headline}
           </h1>
 
