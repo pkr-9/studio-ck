@@ -10,6 +10,7 @@ import {
   Route,
 } from "react-router-dom";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { BackgroundPattern } from "@/components/layout/BackgroundPattern";
 
 // Pages
 import NotFound from "@/pages/NotFound";
@@ -23,6 +24,7 @@ const queryClient = new QueryClient();
 const RootLayout = () => {
   return (
     <div className="min-h-screen relative font-sans antialiased">
+      <BackgroundPattern />
       <div className="relative z-10">
         <Outlet />
       </div>
