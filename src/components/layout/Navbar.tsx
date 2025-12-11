@@ -35,10 +35,10 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-background/20 backdrop-blur-md border-border/20 py-2 shadow-lg supports-[backdrop-filter]:bg-background/20" // Frosted Glass
-          : "bg-transparent border-transparent py-3 md:py-4" // Fully Transparent
+          ? "bg-background/20 backdrop-blur-md border-none py-2 shadow-lg supports-[backdrop-filter]:bg-background/20" // Frosted Glass
+          : "bg-transparent border-none py-3 md:py-4" // Fully Transparent
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">

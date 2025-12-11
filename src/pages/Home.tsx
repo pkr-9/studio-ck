@@ -78,7 +78,7 @@ export default function Home() {
       />
 
       {/* 2. MISSION & VALUES (Based on Doc Section 1) */}
-      <section className="py-20 bg-transparent border-b border-border/40">
+      <section className="py-20 bg-transparent">
         <div className="container px-6 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left: Text */}

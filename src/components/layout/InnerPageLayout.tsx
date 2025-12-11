@@ -1,20 +1,26 @@
-import { Outlet, ScrollRestoration } from "react-router-dom";
+import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { cn } from "@/lib/utils";
 
 export const InnerPageLayout = () => {
+  const location = useLocation();
+
+  // Check if the current page is the Homepage
+  const isHomePage = location.pathname === "/";
+
   return (
     <div className="min-h-screen bg-transparent flex flex-col font-body text-foreground">
-      {/* 1. The Fixed Navbar with 3D Logo */}
+      {/* 1. The Fixed Navbar */}
       <Navbar />
 
       {/* 2. The Dynamic Page Content */}
-      {/* Added pt-20 to prevent content from hiding behind fixed navbar */}
-      <main className="flex-grow pt-20">
+      {/* Logic: If it's Home, NO padding (0). If it's another page, ADD padding (pt-20) */}
+      <main className={cn("flex-grow", !isHomePage && "pt-20")}>
         <Outlet />
       </main>
 
-      {/* 3. The Footer with 3D Branding */}
+      {/* 3. The Footer */}
       <Footer />
 
       {/* 4. Utilities */}

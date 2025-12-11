@@ -239,7 +239,7 @@ export function Hero({ headline, subhead }: HeroProps) {
     // Change 1: Use h-[100dvh] for full mobile screen height
     <section className="relative w-full h-[100dvh] overflow-hidden bg-transparent flex items-center justify-center">
       {/* === 3D Layer (Neon Rain) === */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="absolute inset-0 z-0 pointer-events-none pt-0">
         <Canvas camera={{ position: [0, 0, 12], fov: 45 }} dpr={[1, 1.5]}>
           <ambientLight intensity={0.2} />
           <NeonRain />
@@ -250,7 +250,7 @@ export function Hero({ headline, subhead }: HeroProps) {
 
       {/* === Content Layer === */}
       {/* Change 2: Added pt-20 to visually balance text vs the fixed Navbar */}
-      <div className="container relative z-10 mx-auto px-6 pt-0">
+      <div className="container relative z-10 mx-auto px-6 pt-20">
         <div className="max-w-4xl mx-auto flex flex-col gap-4 items-center text-center">
           {/* Badge */}
           <div className="animate-in fade-in zoom-in duration-1000 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-background/30 px-4 py-1 backdrop-blur-md">

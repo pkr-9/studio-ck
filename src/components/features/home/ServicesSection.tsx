@@ -23,7 +23,7 @@ export function ServicesSection() {
   return (
     <section className="py-24 bg-transparent relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50" />
+      <div className="absolute top-0 left-0 w-full h-px bg-transparent via-primary/50 to-transparent opacity-50" />
 
       <div className="container px-6 mx-auto">
         <div className="mb-16 md:text-center max-w-3xl mx-auto">

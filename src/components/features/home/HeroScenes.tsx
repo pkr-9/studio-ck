@@ -240,24 +240,31 @@
 
 // 3 ----------------------------------------------------
 import { useRef, useMemo, useState } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber"; // Added useThree
 import { Instances, Instance, Float } from "@react-three/drei";
 import * as THREE from "three";
 
 // Configuration for the chaos
 const COUNT = 250;
-const COLORS = ["#6d5ce8", "#a78bfa", "#3b82f6", "#f472b6"]; // Indigo, Violet, Blue, Pink (Glitch)
+const COLORS = ["#6d5ce8", "#a78bfa", "#3b82f6", "#f472b6"];
 
 export function NeonRain() {
+  const { viewport } = useThree(); // Get screen dimensions
+
+  // Calculate dynamic positions:
+  // Push curtains to the edges (width / 2) but keep them slightly visible
+  // On mobile (width ~5), offset ~2.5. On desktop (width ~20), offset ~8.
+  const xOffset = Math.min(viewport.width / 2.2, 8);
+
   return (
     <group>
-      {/* Left Rain Curtain - positioned far left to clear center text */}
-      <RainSystem position={[-7, 0, 0]} colorSet={0} />
+      {/* Dynamic Left Curtain */}
+      <RainSystem position={[-xOffset, 0, 0]} colorSet={0} />
 
-      {/* Right Rain Curtain - positioned far right */}
-      <RainSystem position={[7, 0, 0]} colorSet={1} />
+      {/* Dynamic Right Curtain */}
+      <RainSystem position={[xOffset, 0, 0]} colorSet={1} />
 
-      {/* Floating Chaos Debris - rising slowly in the background */}
+      {/* Floating Chaos Debris */}
       <FloatingDebris />
     </group>
   );
@@ -275,10 +282,9 @@ function RainSystem({
   // Generate random data for rain streaks
   const particles = useMemo(() => {
     return Array.from({ length: COUNT }).map(() => ({
-      // Spread them wide on X (width of curtain) and deep on Z (depth)
       pos: [
         (Math.random() - 0.5) * 5,
-        (Math.random() - 0.5) * 20,
+        (Math.random() - 0.5) * 50, // INCREASED: Taller spread (50 units) to cover gaps
         (Math.random() - 0.5) * 6,
       ] as [number, number, number],
       speed: Math.random() * 0.2 + 0.1,
@@ -287,9 +293,8 @@ function RainSystem({
     }));
   }, []);
 
-  useFrame((state, delta) => {
+  useFrame((state) => {
     if (!groupRef.current) return;
-    // Rotate the entire curtain slightly for a "disorienting" feel
     groupRef.current.rotation.z =
       Math.sin(state.clock.elapsedTime * 0.1) * 0.05;
   });
@@ -297,7 +302,6 @@ function RainSystem({
   return (
     <group position={position} ref={groupRef} rotation={[0, 0, 0.1]}>
       <Instances range={COUNT}>
-        {/* Long thin box for a "digital streak" look */}
         <boxGeometry args={[0.02, 1.5, 0.02]} />
         <meshBasicMaterial
           transparent
@@ -324,10 +328,10 @@ function RainDrop({ pos, speed, scale, color }: any) {
     // Fall logic
     ref.current.position.y -= speed;
 
-    // "Glitch" teleport: If it falls below -10, reset to top
-    if (ref.current.position.y < -10) {
-      ref.current.position.y = 10;
-      // Randomize X slightly on reset for organic feel
+    // UPDATED: Reset Thresholds for seamless looping
+    // Reset at -25 (well below screen) and respawn at 25 (well above screen/navbar)
+    if (ref.current.position.y < -25) {
+      ref.current.position.y = 25;
       ref.current.position.x = pos[0] + (Math.random() - 0.5);
     }
 
@@ -344,22 +348,23 @@ function RainDrop({ pos, speed, scale, color }: any) {
 }
 
 function FloatingDebris() {
+  const { viewport } = useThree();
+
   return (
     <group>
       {Array.from({ length: 15 }).map((_, i) => (
         <Float key={i} speed={2} rotationIntensity={4} floatIntensity={2}>
           <mesh
             position={[
-              (Math.random() - 0.5) * 20, // Spread across whole screen
-              (Math.random() - 0.5) * 10,
+              (Math.random() - 0.5) * viewport.width, // Spread across full dynamic width
+              (Math.random() - 0.5) * 15,
               (Math.random() - 0.5) * 5,
             ]}
           >
-            {/* Geometric "Artifacts" */}
             <octahedronGeometry args={[Math.random() * 0.3]} />
             <meshStandardMaterial
               color={COLORS[Math.floor(Math.random() * COLORS.length)]}
-              wireframe={Math.random() > 0.5} // Mix solid and wireframe
+              wireframe={Math.random() > 0.5}
               transparent
               opacity={0.5}
             />
