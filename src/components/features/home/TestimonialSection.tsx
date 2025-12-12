@@ -14,7 +14,7 @@ export function TestimonialSection() {
   const { data: testimonials } = useTestimonials();
 
   return (
-    <section className="py-24 bg-background relative">
+    <section className="py-24 bg-transparent relative">
       <div className="container px-6 mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-6">
           <div>

@@ -13,7 +13,7 @@ export function EventMarquee() {
   const marqueeImages = [...images, ...images, ...images];
 
   return (
-    <section className="py-24 overflow-hidden bg-secondary/10">
+    <section className="py-24 overflow-hidden bg-transparent">
       <div className="container mx-auto px-6 mb-12 text-center">
         <h2 className="text-3xl md:text-5xl font-heading font-black mb-4">
           Life in Motion
@@ -84,7 +84,7 @@ function MarqueeItem({ src }: { src: string }) {
           "w-full h-full object-cover transition-all duration-700 ease-out will-change-transform",
           isActive
             ? "grayscale-0 scale-110 opacity-100" // Active State
-            : "grayscale scale-100 opacity-60" // Idle State
+            : "grayscale scale-100 opacity-90" // Idle State
         )}
       />
 

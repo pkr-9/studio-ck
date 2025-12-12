@@ -240,31 +240,26 @@
 
 // 3 ----------------------------------------------------
 import { useRef, useMemo, useState } from "react";
-import { useFrame, useThree } from "@react-three/fiber"; // Added useThree
+import { useFrame, useThree } from "@react-three/fiber";
 import { Instances, Instance, Float } from "@react-three/drei";
 import * as THREE from "three";
 
-// Configuration for the chaos
+// UPDATED COLORS: Gold, Amber, Warm White, Deep Orange
 const COUNT = 250;
-const COLORS = ["#6d5ce8", "#a78bfa", "#3b82f6", "#f472b6"];
+const COLORS = ["#F59E0B", "#D97706", "#FFFBEB", "#B45309"];
 
 export function NeonRain() {
-  const { viewport } = useThree(); // Get screen dimensions
-
-  // Calculate dynamic positions:
-  // Push curtains to the edges (width / 2) but keep them slightly visible
-  // On mobile (width ~5), offset ~2.5. On desktop (width ~20), offset ~8.
+  const { viewport } = useThree();
   const xOffset = Math.min(viewport.width / 2.2, 8);
 
   return (
     <group>
-      {/* Dynamic Left Curtain */}
+      {/* Dynamic Left Curtain - Gold Set */}
       <RainSystem position={[-xOffset, 0, 0]} colorSet={0} />
 
-      {/* Dynamic Right Curtain */}
+      {/* Dynamic Right Curtain - Amber Set */}
       <RainSystem position={[xOffset, 0, 0]} colorSet={1} />
 
-      {/* Floating Chaos Debris */}
       <FloatingDebris />
     </group>
   );
@@ -279,12 +274,11 @@ function RainSystem({
 }) {
   const groupRef = useRef<THREE.Group>(null);
 
-  // Generate random data for rain streaks
   const particles = useMemo(() => {
     return Array.from({ length: COUNT }).map(() => ({
       pos: [
         (Math.random() - 0.5) * 5,
-        (Math.random() - 0.5) * 50, // INCREASED: Taller spread (50 units) to cover gaps
+        (Math.random() - 0.5) * 50,
         (Math.random() - 0.5) * 6,
       ] as [number, number, number],
       speed: Math.random() * 0.2 + 0.1,
@@ -307,7 +301,8 @@ function RainSystem({
           transparent
           opacity={0.6}
           toneMapped={false}
-          color={colorSet === 0 ? "#8b5cf6" : "#3b82f6"}
+          // Updated base colors for the columns
+          color={colorSet === 0 ? "#F59E0B" : "#D97706"}
         />
 
         {particles.map((data, i) => (
@@ -318,30 +313,23 @@ function RainSystem({
   );
 }
 
+// ... (Keep RainDrop and FloatingDebris functions the same, they use the new global COLORS array automatically)
 function RainDrop({ pos, speed, scale, color }: any) {
   const ref = useRef<THREE.Group>(null);
   const [randomOffset] = useState(() => Math.random() * 100);
 
   useFrame((state) => {
     if (!ref.current) return;
-
-    // Fall logic
     ref.current.position.y -= speed;
-
-    // UPDATED: Reset Thresholds for seamless looping
-    // Reset at -25 (well below screen) and respawn at 25 (well above screen/navbar)
     if (ref.current.position.y < -25) {
       ref.current.position.y = 25;
       ref.current.position.x = pos[0] + (Math.random() - 0.5);
     }
-
-    // Occasional "Glitch" Shake
     const t = state.clock.elapsedTime + randomOffset;
     if (Math.sin(t * 10) > 0.95) {
       ref.current.position.x += (Math.random() - 0.5) * 0.2;
     }
   });
-
   return (
     <Instance ref={ref} position={pos} scale={[1, scale, 1]} color={color} />
   );
@@ -349,14 +337,13 @@ function RainDrop({ pos, speed, scale, color }: any) {
 
 function FloatingDebris() {
   const { viewport } = useThree();
-
   return (
     <group>
       {Array.from({ length: 15 }).map((_, i) => (
         <Float key={i} speed={2} rotationIntensity={4} floatIntensity={2}>
           <mesh
             position={[
-              (Math.random() - 0.5) * viewport.width, // Spread across full dynamic width
+              (Math.random() - 0.5) * viewport.width,
               (Math.random() - 0.5) * 15,
               (Math.random() - 0.5) * 5,
             ]}

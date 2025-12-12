@@ -4,65 +4,81 @@
 
 @layer base {
   :root {
-    /* Base: Very light cool grey for readability in light mode */
-    --background: 220 30% 98%;
-    /* Text: Deep Navy */
-    --foreground: 222 47% 11%;
+    /* --- LIGHT MODE: SAFFRON & SILK (Traditional/Day) --- */
 
-    /* Card: White */
+    /* Base: Warm Ivory/Cream (Not stark white) */
+    --background: 40 20% 97%;
+    /* Text: Deep Warm Charcoal (Softer than black) */
+    --foreground: 20 14% 15%;
+
+    /* Card: Pure White for contrast against Ivory bg */
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 20 14% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 20 14% 15%;
 
-    /* Primary: Electric Indigo (Vibrant & Stylish) */
-    --primary: 245 80% 60%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary: Vibrant Marigold/Saffron */
+    --primary: 24 90% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Soft Lavender Grey */
-    --secondary: 240 20% 96%;
-    --secondary-foreground: 222 47% 11%;
+    /* Secondary: Soft Gold/Beige */
+    --secondary: 35 30% 90%;
+    --secondary-foreground: 24 40% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 240 20% 96%;
-    --accent-foreground: 222 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 245 80% 60%;
+    /* Muted: Warm Grey */
+    --muted: 30 10% 92%;
+    --muted-foreground: 25 5% 45%;
+
+    /* Accent: Light Orange/Peach tint */
+    --accent: 30 40% 94%;
+    --accent-foreground: 24 40% 20%;
+
+    /* Destructive: Deep Red (Sindoor) */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 30 10% 85%;
+    --input: 30 10% 85%;
+    --ring: 24 90% 55%;
     --radius: 0.75rem;
   }
 
   .dark {
-    /* Base: Deep Midnight Blue (Not pure black, feels richer) */
-    --background: 222 47% 6%; /* #080C17 */
-    --foreground: 210 40% 98%;
+    /* --- DARK MODE: ROYAL NOIR (Cinematic/Night) --- */
 
-    /* Card: Slightly lighter midnight */
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
+    /* Base: Rich Warm Black (Think expensive suit / dark night) */
+    --background: 20 14% 4%;
+    /* Text: Off-white/Gold-tinted white */
+    --foreground: 40 10% 96%;
 
-    /* Primary: Glowing Electric Violet/Blue */
-    --primary: 245 90% 65%; /* #6d5ce8 - Pops against dark bg */
-    --primary-foreground: 222 47.4% 11.2%;
+    /* Card: Slightly lighter black/brown */
+    --card: 20 14% 8%;
+    --card-foreground: 40 10% 96%;
+    --popover: 20 14% 8%;
+    --popover-foreground: 40 10% 96%;
 
-    /* Secondary: Deep Indigo Grey */
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    /* Primary: Luxurious Gold */
+    --primary: 45 93% 47%;
+    --primary-foreground: 20 14% 4%; /* Black text on Gold button */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 245 90% 65%;
+    /* Secondary: Deep Bronze/Charcoal */
+    --secondary: 30 10% 15%;
+    --secondary-foreground: 40 10% 96%;
+
+    /* Muted: Dark Bronze Grey */
+    --muted: 30 10% 15%;
+    --muted-foreground: 40 5% 65%;
+
+    /* Accent: Dark Gold Tint */
+    --accent: 30 10% 15%;
+    --accent-foreground: 40 10% 96%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 30 10% 15%;
+    --input: 30 10% 15%;
+    --ring: 45 93% 47%;
   }
 }
 
@@ -71,38 +87,6 @@
     @apply border-border;
   }
   body {
-    /* bg-background is opaque by default, but our component sits behind it.
-       If sections have transparent backgrounds, the pattern shows. */
     @apply bg-background text-foreground;
   }
 }
-
-/* @layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-
-    background-image: radial-gradient(
-      hsl(var(--primary) / 0.1) 1px,
-      transparent 1px
-    );
-    background-size: 24px 24px
-    background-attachment: fixed;
-  }
-
-  -----------------------------------------------
-  body {
-    @apply bg-background text-foreground;
-    background-image: linear-gradient(
-        to right,
-        hsl(var(--border) / 0.15) 1px,
-        transparent 1px
-      ),
-      linear-gradient(to bottom, hsl(var(--border) / 0.15) 1px, transparent 1px);
-    background-size: 40px 40px;
-    background-attachment: fixed;
-  }
-} */
