@@ -16,7 +16,7 @@ export function TestimonialSection() {
   return (
     <section className="py-24 bg-background relative">
       <div className="container px-6 mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-6">
           <div>
             <span className="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">
               Client Love
