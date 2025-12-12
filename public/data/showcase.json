@@ -1,0 +1,58 @@
+{
+  "weddings": [
+    {
+      "id": "w1",
+      "image": "/assets/images/showcase/weddings/w1.jpg",
+      "caption": "The Vows"
+    },
+    {
+      "id": "w2",
+      "image": "/assets/images/showcase/weddings/w2.jpg",
+      "caption": "First Dance"
+    },
+    {
+      "id": "w3",
+      "image": "/assets/images/showcase/weddings/w3.jpg",
+      "caption": "Golden Hour"
+    }
+  ],
+  "parties": [
+    "/assets/images/showcase/parties/p1.jpg",
+    "/assets/images/showcase/parties/p2.jpg",
+    "/assets/images/showcase/parties/p3.jpg",
+    "/assets/images/showcase/parties/p4.jpg",
+    "/assets/images/showcase/parties/p5.jpg"
+  ],
+  "gatherings": {
+    "corporate": [
+      {
+        "id": "c1",
+        "src": "/assets/images/showcase/gatherings/corporate/c1.jpg"
+      },
+      {
+        "id": "c2",
+        "src": "/assets/images/showcase/gatherings/corporate/c2.jpg"
+      }
+    ],
+    "political": [
+      {
+        "id": "p1",
+        "src": "/assets/images/showcase/gatherings/political/p1.jpg"
+      },
+      {
+        "id": "p2",
+        "src": "/assets/images/showcase/gatherings/political/p2.jpg"
+      }
+    ],
+    "traditional": [
+      {
+        "id": "t1",
+        "src": "/assets/images/showcase/gatherings/traditional/t1.jpg"
+      },
+      {
+        "id": "t2",
+        "src": "/assets/images/showcase/gatherings/traditional/t2.jpg"
+      }
+    ]
+  }
+}

@@ -9,7 +9,7 @@
     "category": "Photography",
     "features": ["Custom shot lists", "Multi-photographer options"],
     "isPopular": true,
-    "imageUrl": "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop"
+    "imageUrl": "/assets/images/services/event-photography.jpg"
   },
   {
     "id": "s2",
@@ -21,7 +21,7 @@
     "category": "Videography",
     "features": ["Cinematic highlight films", "Drone footage options"],
     "isPopular": true,
-    "imageUrl": "https://images.unsplash.com/photo-1649183424680-464747a8e43d?q=80&w=386&auto=format&fit=crop"
+    "imageUrl": "/assets/images/services/event-videography.jpg"
   },
   {
     "id": "s3",
@@ -32,7 +32,7 @@
     "iconName": "Radio",
     "category": "Livestreaming",
     "features": ["Multi-platform support", "Professional audio"],
-    "imageUrl": "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1000&auto=format&fit=crop"
+    "imageUrl": "/assets/images/services/live-streaming.jpg"
   },
   {
     "id": "s4",
@@ -43,7 +43,7 @@
     "iconName": "Wand",
     "category": "Editing",
     "features": ["Skin tone removal", "Cinematic LUTs"],
-    "imageUrl": "https://images.unsplash.com/photo-1607861884586-c7cfaed16290?q=80&w=387&auto=format&fit=crop"
+    "imageUrl": "/assets/images/services/creative-editing.jpg"
   },
   {
     "id": "s5",
@@ -54,6 +54,6 @@
     "iconName": "User",
     "category": "Studio",
     "features": ["Professional headshots", "Family sessions"],
-    "imageUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop"
+    "imageUrl": "/assets/images/services/studio-portraits.jpg"
   }
 ]

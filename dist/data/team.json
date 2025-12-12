@@ -4,20 +4,20 @@
     "name": "Alex Carter",
     "role": "Lead Photographer",
     "bio": "Responsible for creative direction and principal capture. Alex ensures the visual storytelling matches the client's vision.",
-    "imageUrl": "/images/team-1.jpg"
+    "imageUrl": "/assets/images/images/team-1.png"
   },
   {
     "id": "t2",
     "name": "Sarah Jenkins",
     "role": "Senior Editor",
     "bio": "Handles photo and video processing, color correction, and final quality assurance to ensure every deliverable is polished.",
-    "imageUrl": "/images/team-2.jpg"
+    "imageUrl": "/assets/images/images/team-2.png"
   },
   {
     "id": "t3",
     "name": "Mike Ross",
     "role": "Sales & Client Success",
     "bio": "Your first point of contact. Mike handles contract closure, payment plans, and ensures your onboarding experience is smooth.",
-    "imageUrl": "/images/team-3.jpg"
+    "imageUrl": "/assets/images/images/team-3.png"
   }
 ]

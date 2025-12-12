@@ -1,3 +1,5 @@
+import { useStartup } from "@/context/StartupContext";
+import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu } from "lucide-react";
@@ -21,8 +23,11 @@ const navLinks = [
 ];
 
 export function Navbar() {
+  const { stage, setStage, isHome } = useStartup();
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  const shouldShow = !isHome || stage === "navbar" || stage === "complete";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +38,17 @@ export function Navbar() {
   }, []);
 
   return (
-    <header
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{
+        y: shouldShow ? 0 : -100,
+        opacity: shouldShow ? 1 : 0,
+      }}
+      transition={{ duration: 0.8, ease: "circOut" }}
+      onAnimationComplete={() => {
+        // Once navbar is down, show the rest of the website
+        if (isHome && stage === "navbar") setStage("complete");
+      }}
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
@@ -143,6 +158,6 @@ export function Navbar() {
           </Sheet>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }

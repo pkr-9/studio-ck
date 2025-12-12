@@ -1,9 +1,4 @@
-// src/data/types.ts
-
-// =========================================
-// 1. SERVICES (Based on Doc Section 2)
-// Source: [cite: 6, 7, 11, 14, 18, 21, 25, 27]
-// =========================================
+export type MediaType = "image" | "video";
 
 export type ServiceCategory =
     | "Photography"
@@ -14,21 +9,24 @@ export type ServiceCategory =
 
 export interface Service {
     id: string;
-    slug: string;           // For routing: /services/event-photography
-    title: string;          // e.g., "Event Photography"
-    shortDescription: string; // One-liner for cards
-    fullDescription: string;  // Detailed text for ServiceDetail page
-    iconName: string;       // Name of Lucide icon to render (e.g., "Camera", "Video")
+    slug: string;
+    title: string;
+    shortDescription: string;
+    fullDescription: string;
+    iconName: string;
     category: ServiceCategory;
-    features: string[];     // List of specifics e.g., "Drone footage", "Gimbal shots" [cite: 13]
-    isPopular?: boolean;    // For highlighting on Homepage
+    features: string[];
+    isPopular?: boolean;
+    imageUrl: string;
 }
 
-// =========================================
-// 2. PACKAGES (Based on Doc Section 4)
-// Source: [cite: 45, 47, 53, 59]
-// =========================================
-
+export interface ProcessStep {
+    id: string;
+    stepNumber: string; // e.g., "01"
+    title: string;      // e.g., "Discovery Call"
+    description: string; // e.g., "We define the scope..."
+    iconName?: string;  // Lucid icon name
+}
 export interface Package {
     id: string;
     name: string;           // e.g., "Basic Event", "Premium Wedding"
@@ -42,13 +40,6 @@ export interface Package {
     recommendedFor: string; // e.g., "Small party", "Full Wedding" [cite: 47, 59]
 }
 
-// =========================================
-// 3. PORTFOLIO & GALLERY (Based on Doc Section 2 & 3)
-// Source: [cite: 22, 40]
-// =========================================
-
-export type MediaType = "image" | "video";
-
 export interface PortfolioItem {
     id: string;
     title: string;          // Project name e.g., "Smith Wedding"
@@ -61,11 +52,6 @@ export interface PortfolioItem {
     date?: string;
 }
 
-// =========================================
-// 4. TESTIMONIALS (Based on Doc Section 3 - UX)
-// Source: [cite: 44, 134, 143]
-// =========================================
-
 export interface Testimonial {
     id: string;
     clientName: string;
@@ -75,11 +61,6 @@ export interface Testimonial {
     rating: number;         // 1-5 stars [cite: 134]
     avatarUrl?: string;     // Optional client photo
 }
-
-// =========================================
-// 5. TEAM (Based on Doc Section 18 - Internal Roles)
-// Source: [cite: 158, 160, 161, 162]
-// =========================================
 
 export interface TeamMember {
     id: string;
@@ -94,22 +75,12 @@ export interface TeamMember {
     };
 }
 
-// =========================================
-// 6. FAQ (Based on Doc Section 13)
-// Source: [cite: 122-129]
-// =========================================
-
 export interface FAQItem {
     id: string;
     question: string;       // e.g., "Do you provide raw files?" [cite: 125]
     answer: string;         // e.g., "Raw files are available as an add-on..."
     category?: "Booking" | "Delivery" | "Rights";
 }
-
-// =========================================
-// 7. BOOKING & INQUIRY (Based on Doc Section 12)
-// Source: [cite: 114, 150]
-// =========================================
 
 export interface InquiryForm {
     name: string;
@@ -119,15 +90,28 @@ export interface InquiryForm {
     eventDate: Date | undefined;
     message?: string;
 }
-export interface Service {
-    id: string;
-    slug: string;
-    title: string;
-    shortDescription: string;
-    fullDescription: string;
-    iconName: string;
-    category: ServiceCategory;
-    features: string[];
-    isPopular?: boolean;
-    imageUrl: string; // <--- NEW FIELD
+export interface NavData {
+    logoUrl: string;
+    links: Array<{
+        label: string;
+        href: string;
+    }>;
+}
+
+export interface HomeData {
+    headline: string;
+    subhead: string;
+    heroImageUrl: string;
+    featuredServices: Service[];
+    featuredPortfolio: PortfolioItem[];
+}
+
+export interface ShowcaseData {
+    weddings: { id: string; image: string; caption: string }[];
+    parties: string[];
+    gatherings: {
+        corporate: { id: string; src: string }[];
+        political: { id: string; src: string }[];
+        traditional: { id: string; src: string }[];
+    };
 }

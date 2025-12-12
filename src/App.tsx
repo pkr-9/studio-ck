@@ -1,3 +1,4 @@
+import { StartupProvider } from "@/context/StartupContext";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -23,15 +24,17 @@ const queryClient = new QueryClient();
 
 const RootLayout = () => {
   return (
-    <div className="min-h-screen relative font-sans antialiased">
-      <BackgroundPattern />
-      <div className="relative z-10">
-        <Outlet />
-      </div>
+    <StartupProvider>
+      <div className="min-h-screen relative font-sans antialiased">
+        <BackgroundPattern />
+        <div className="relative z-10">
+          <Outlet />
+        </div>
 
-      <Toaster />
-      <Sonner />
-    </div>
+        <Toaster />
+        <Sonner />
+      </div>
+    </StartupProvider>
   );
 };
 

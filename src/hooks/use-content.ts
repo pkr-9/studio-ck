@@ -1,12 +1,37 @@
-// src/hooks/use-content.ts
 import { useQuery } from "@tanstack/react-query";
-import { fetchJSON, NavData, HomeData, Service, Product, Industry, Testimonial, CaseStudy } from "@/lib/api";
-import { PortfolioItem } from "@/data/types";
+import { fetchJSON } from "@/lib/api";
+import {
+    Service,
+    PortfolioItem,
+    Testimonial,
+    TeamMember,
+    FAQItem,
+    ProcessStep,
+    HomeData,
+    Package,
+    NavData,
+    ShowcaseData
+} from "@/data/types";
 
-export function usePortfolio() {
+export function useNavData() {
     return useQuery({
-        queryKey: ["portfolio"],
-        queryFn: () => fetchJSON<PortfolioItem[]>("/data/portfolio.json"),
+        queryKey: ["nav"],
+        queryFn: () => fetchJSON<NavData>("/data/nav.json"),
+        staleTime: 1000 * 60 * 60, // 1 hour
+    });
+}
+
+export function useHomeData() {
+    return useQuery({
+        queryKey: ["home"],
+        queryFn: () => fetchJSON<HomeData>("/data/home.json"),
+    });
+}
+
+export function useShowcase() {
+    return useQuery({
+        queryKey: ["showcase"],
+        queryFn: () => fetchJSON<ShowcaseData>("/data/showcase.json"),
     });
 }
 
@@ -17,20 +42,48 @@ export function useServices() {
     });
 }
 
-// export function useNavData() {
-//     return useQuery({
-//         queryKey: ["nav"],
-//         queryFn: () => fetchJSON<NavData>("/data/nav.json"),
-//         staleTime: 1000 * 60 * 60, // 1 hour
-//     });
-// }
-
-export function useHomeData() {
+export function usePackages() {
     return useQuery({
-        queryKey: ["home"],
-        queryFn: () => fetchJSON<HomeData>("/data/home.json"),
+        queryKey: ["packages"],
+        queryFn: () => fetchJSON<Package[]>("/data/packages.json"),
     });
 }
+
+export function usePortfolio() {
+    return useQuery({
+        queryKey: ["portfolio"],
+        queryFn: () => fetchJSON<PortfolioItem[]>("/data/portfolio.json"),
+    });
+}
+
+export function useProcess() {
+    return useQuery({
+        queryKey: ["process"],
+        queryFn: () => fetchJSON<ProcessStep[]>("/data/process.json"),
+    });
+}
+
+export function useTestimonials() {
+    return useQuery({
+        queryKey: ["testimonials"],
+        queryFn: () => fetchJSON<Testimonial[]>("/data/testimonials.json"),
+    });
+}
+
+export function useTeam() {
+    return useQuery({
+        queryKey: ["team"],
+        queryFn: () => fetchJSON<TeamMember[]>("/data/team.json"),
+    });
+}
+
+export function useFAQ() {
+    return useQuery({
+        queryKey: ["faq"],
+        queryFn: () => fetchJSON<FAQItem[]>("/data/faq.json"),
+    });
+}
+
 
 
 
@@ -41,19 +94,10 @@ export function useHomeData() {
 //     });
 // }
 
-
-
 // export function useCaseStudies() {
 //     return useQuery({
 //         queryKey: ["case-studies"],
 //         queryFn: () => fetchJSON<CaseStudy[]>("/data/case-studies.json"),
-//     });
-// }
-
-// export function useTestimonials() {
-//     return useQuery({
-//         queryKey: ["testimonials"],
-//         queryFn: () => fetchJSON<Testimonial[]>("/data/testimonials.json"),
 //     });
 // }
 
@@ -63,6 +107,8 @@ export function useHomeData() {
 //         queryFn: () => fetchJSON<Industry[]>("/data/industries.json"),
 //     });
 // }
+
+
 
 // export function useProductBySlug(slug: string | undefined) {
 //     return useQuery({

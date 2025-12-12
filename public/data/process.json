@@ -1,0 +1,30 @@
+[
+  {
+    "id": "step1",
+    "stepNumber": "01",
+    "title": "Discovery",
+    "description": "We start with a consultation to understand your vision, timeline, and specific shot list requirements.",
+    "iconName": "MessageSquare"
+  },
+  {
+    "id": "step2",
+    "stepNumber": "02",
+    "title": "The Shoot",
+    "description": "Our team arrives early to scout the venue. We capture key moments using professional gear and backup systems.",
+    "iconName": "Camera"
+  },
+  {
+    "id": "step3",
+    "stepNumber": "03",
+    "title": "Editing",
+    "description": "We cull, color correct, and retouch your images. Video goes through assembly, music sync, and grading.",
+    "iconName": "Edit3"
+  },
+  {
+    "id": "step4",
+    "stepNumber": "04",
+    "title": "Delivery",
+    "description": "Receive your private online gallery and download links within our guaranteed turnaround time.",
+    "iconName": "DownloadCloud"
+  }
+]

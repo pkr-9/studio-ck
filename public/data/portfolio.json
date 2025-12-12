@@ -3,7 +3,7 @@
     "id": "p1",
     "title": "Neon Nights Gala",
     "category": "Event Photography",
-    "coverImage": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1000&auto=format&fit=crop",
+    "coverImage": "/assets/images/portfolio/Neon-Nights-Gala.jpg",
     "mediaType": "image",
     "clientName": "TechVibe Inc"
   },
@@ -11,7 +11,7 @@
     "id": "p2",
     "title": "Ethereal Wedding",
     "category": "Videography",
-    "coverImage": "https://images.unsplash.com/photo-1760015131464-b632d5e40c8a?q=80&w=974&auto=format&fit=crop",
+    "coverImage": "/assets/images/portfolio/Ethereal-Wedding.jpg",
     "mediaType": "video",
     "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
     "clientName": "Sarah & Tom"
@@ -20,7 +20,7 @@
     "id": "p3",
     "title": "Urban Fashion",
     "category": "Studio Portraits",
-    "coverImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop",
+    "coverImage": "/assets/images/portfolio/Urban-Fashion.jpg",
     "mediaType": "image",
     "clientName": "Vogue Street"
   },
@@ -28,7 +28,7 @@
     "id": "p4",
     "title": "Mountain Elopement",
     "category": "Event Photography",
-    "coverImage": "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000&auto=format&fit=crop",
+    "coverImage": "/assets/images/portfolio/Mountain-Elopement.jpg",
     "mediaType": "image",
     "clientName": "Private Client"
   }
